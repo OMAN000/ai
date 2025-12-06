@@ -50,7 +50,7 @@
         <h2 class="text-2xl font-bold text-green-600 mb-4">🎉 أحسنت!</h2>
         <p class="text-gray-700 mb-6">لقد أكملت جميع خطوات إنشاء الفيديو بنجاح. يمكنك الآن مراجعة الملخص أو إغلاق النافذة.</p>
         <div class="flex flex-col space-y-3">
-            <a href="summary.pdf" download class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-8 rounded shadow flex items-center gap-2">
+            <a href="الدليل التعليمي البسيط.pdf" download class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-8 rounded shadow flex items-center gap-2">
                 <span>⬇️</span> تحميل الملخص (PDF)
             </a>
             <button onclick="window.close()" class="text-gray-500 hover:underline font-bold py-2 px-6 rounded">إغلاق الدليل</button>
@@ -66,42 +66,12 @@
         }
 
         const steps = [
-            {
-                title: "الخطوة 1: البحث عن الأدوات والتسجيل",
-                desc: `ابدأ بتشغيل مسجل الشاشة لتوثيق عملك. ثم ابحث عن الأدوات التالية: ChatGPT، Midjourney، RunwayML، ElevenLabs. سجل حساباتك لتكون جاهزاً للعمل.`,
-                videoUrl: "1.mp4",
-                extraContent: `<div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3"><strong>نصيحة:</strong> استخدم <strong>حساب وهمي</strong> لتجنب قيود توليد الصور والفيديوهات.</div>`
-            },
-            {
-                title: "الخطوة 2: كتابة السيناريو (ChatGPT)",
-                desc: `استخدم المثال التالي لإعداد سيناريو كامل للفيديو، ويمكنك تعديل النص لكتابة سيناريوك الخاص.`,
-                videoUrl: "2.mp4",
-                extraContent: `<div class="flex justify-between items-center mt-2"><span class="text-xs font-semibold">الأمر المراد نسخه:</span><button onclick="copyPrompt()" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-0.5 rounded text-xs">نسخ</button></div><div class="prompt-box">أكتب سيناريو كامل لفيديو قصير مكون من 5 مشاهد حول "شخصية تستكشف مدينة مستقبلية هادئة". لكل مشهد اكتب بالتفصيل: 1. وصف المشهد 2. أمر توليد صورة ثابتة 3. تعليمات التحريك لتطبيقها في RunwayML 4. نص الفويس أوفر مع النبرة المطلوبة ⚠️ هذا مجرد مثال.</div>`
-            },
-            {
-                title: "الخطوة 3: توليد الصور الثابتة (Midjourney)",
-                desc: `استخدم كل جملة من السيناريو كأمر لتوليد الصور. جرب عدة نسخ واختر أفضل صورة لكل مشهد، وحمل الصور مع ترقيمها.`,
-                videoUrl: "3.mp4",
-                extraContent: `<div class="bg-yellow-50 p-3 border-r-4 border-yellow-400 text-sm mt-3"><strong>نصيحة:</strong> يمكن تعديل Prompts لتغيير أسلوب الرسم أو الجو العام.</div>`
-            },
-            {
-                title: "الخطوة 4: تحريك المشاهد (RunwayML)",
-                desc: `استخدم خاصية التحريك Gen-2 أو ما يعادلها لكل صورة ثابتة، مع تحديد حركة الكاميرا والمؤثرات لكل مشهد. حفظ كل مقطع فيديو متحرك.`,
-                videoUrl: "4.mp4",
-                extraContent: `<div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3"><strong>نصيحة:</strong> استخدم حساب وهمي إذا واجهت قيود التحريك اليومية.</div>`
-            },
-            {
-                title: "الخطوة 5: إنشاء الصوت (ElevenLabs)",
-                desc: `قم بإنشاء الصوت لكل مشهد على حدة، واختر النبرة المناسبة للسياق (هادئ، حماسي...). حمل الملفات الصوتية بالترتيب.`,
-                videoUrl: "5.mp4",
-                extraContent: `<div class="bg-blue-50 p-3 border-r-4 border-blue-400 text-sm mt-3"><strong>ملاحظة:</strong> التسجيل غير إلزامي للاستخدام الأساسي.</div>`
-            },
-            {
-                title: "الخطوة 6: التجميع والإخراج النهائي (CapCut)",
-                desc: `اسحب كل مقاطع الفيديو وملفات الصوت إلى مشروع جديد في CapCut. رتب المشاهد، أضف الموسيقى الخلفية، وصدّر الفيديو النهائي بدقة عالية.`,
-                videoUrl: "6.mp4",
-                extraContent: `<div class="bg-green-50 p-3 border-r-4 border-green-400 text-sm mt-3"><strong>نصيحة:</strong> تأكد من مزامنة الصوت مع الفيديو بدقة للحصول على أفضل جودة.</div>`
-            }
+            { title: "الخطوة 1: البحث عن الأدوات والتسجيل", desc: `ابدأ بتشغيل مسجل الشاشة لتوثيق عملك. ثم ابحث عن الأدوات التالية: ChatGPT، Midjourney، RunwayML، ElevenLabs. سجل حساباتك لتكون جاهزاً للعمل.`, videoUrl: "1.mp4", extraContent: `<div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3"><strong>نصيحة:</strong> استخدم <strong>حساب وهمي</strong> لتجنب قيود توليد الصور والفيديوهات.</div>` },
+            { title: "الخطوة 2: كتابة السيناريو (ChatGPT)", desc: `استخدم المثال التالي لإعداد سيناريو كامل للفيديو، ويمكنك تعديل النص لكتابة سيناريوك الخاص.`, videoUrl: "2.mp4", extraContent: `<div class="flex justify-between items-center mt-2"><span class="text-xs font-semibold">الأمر المراد نسخه:</span><button onclick="copyPrompt()" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-0.5 rounded text-xs">نسخ</button></div><div class="prompt-box">أكتب سيناريو كامل لفيديو قصير مكون من 5 مشاهد حول "شخصية تستكشف مدينة مستقبلية هادئة". لكل مشهد اكتب بالتفصيل: 1. وصف المشهد 2. أمر توليد صورة ثابتة 3. تعليمات التحريك لتطبيقها في RunwayML 4. نص الفويس أوفر مع النبرة المطلوبة ⚠️ هذا مجرد مثال.</div>` },
+            { title: "الخطوة 3: توليد الصور الثابتة (Midjourney)", desc: `استخدم كل جملة من السيناريو كأمر لتوليد الصور. جرب عدة نسخ واختر أفضل صورة لكل مشهد، وحمل الصور مع ترقيمها.`, videoUrl: "3.mp4", extraContent: `<div class="bg-yellow-50 p-3 border-r-4 border-yellow-400 text-sm mt-3"><strong>نصيحة:</strong> يمكن تعديل Prompts لتغيير أسلوب الرسم أو الجو العام.</div>` },
+            { title: "الخطوة 4: تحريك المشاهد (RunwayML)", desc: `استخدم خاصية التحريك Gen-2 أو ما يعادلها لكل صورة ثابتة، مع تحديد حركة الكاميرا والمؤثرات لكل مشهد. حفظ كل مقطع فيديو متحرك.`, videoUrl: "4.mp4", extraContent: `<div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3"><strong>نصيحة:</strong> استخدم حساب وهمي إذا واجهت قيود التحريك اليومية.</div>` },
+            { title: "الخطوة 5: إنشاء الصوت (ElevenLabs)", desc: `قم بإنشاء الصوت لكل مشهد على حدة، واختر النبرة المناسبة للسياق (هادئ، حماسي...). حمل الملفات الصوتية بالترتيب.`, videoUrl: "5.mp4", extraContent: `<div class="bg-blue-50 p-3 border-r-4 border-blue-400 text-sm mt-3"><strong>ملاحظة:</strong> التسجيل غير إلزامي للاستخدام الأساسي.</div>` },
+            { title: "الخطوة 6: التجميع والإخراج النهائي (CapCut)", desc: `اسحب كل مقاطع الفيديو وملفات الصوت إلى مشروع جديد في CapCut. رتب المشاهد، أضف الموسيقى الخلفية، وصدّر الفيديو النهائي بدقة عالية.`, videoUrl: "6.mp4", extraContent: `<div class="bg-green-50 p-3 border-r-4 border-green-400 text-sm mt-3"><strong>نصيحة:</strong> تأكد من مزامنة الصوت مع الفيديو بدقة للحصول على أفضل جودة.</div>` }
         ];
 
         let currentStepIndex = 0;
@@ -153,5 +123,6 @@
 
         loadStep(currentStepIndex);
     </script>
+
 </body>
 </html>
