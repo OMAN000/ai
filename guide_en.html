@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Video Creation Guide</title>
+    <title>Professional AI Video Creation Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -32,7 +32,7 @@
         <h2 id="step-title" class="text-lg font-bold mb-3 text-gray-800">Step Title</h2>
 
         <video id="step-video" class="mb-3 rounded" width="100%" height="200" controls autoplay loop muted>
-            <source src="" type="video/mp4">
+            <source src="1.mp4" type="video/mp4">
             Video not available
         </video>
 
@@ -42,7 +42,7 @@
     <div id="control-panel" class="pt-3 border-t">
         <div class="flex justify-between">
             <button onclick="prevStep()" id="btn-prev" class="text-gray-500 hover:text-gray-700 disabled:opacity-50 text-sm" disabled>Previous</button>
-            <button onclick="nextStep()" id="btn-next" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded text-sm shadow">Next</button>
+            <button onclick="nextStep()" id="btn-next" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded text-sm shadow">Next Step</button>
         </div>
     </div>
 
@@ -50,14 +50,13 @@
         <h2 class="text-2xl font-bold text-green-600 mb-4">🎉 Congratulations!</h2>
         <p class="text-gray-700 mb-6">You have successfully completed all steps of AI video creation. You can now review the summary or close the guide.</p>
         <div class="flex flex-col space-y-3">
-            <button onclick="generatePDF()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-8 rounded shadow flex items-center gap-2">
+            <a href="AI-Video-Guide-Simple.pdf" download class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-8 rounded shadow flex items-center gap-2">
                 <span>⬇️</span> Download Summary (PDF)
-            </button>
+            </a>
             <button onclick="window.close()" class="text-gray-500 hover:underline font-bold py-2 px-6 rounded">Close Guide</button>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         function copyPrompt() {
             const promptText = document.querySelector('.prompt-box').innerText;
@@ -67,77 +66,12 @@
         }
 
         const steps = [
-            {
-                title: "Step 1: Research and Sign Up",
-                desc: `Start by enabling your screen recorder to document your work. Search for these tools: ChatGPT, Midjourney, RunwayML, ElevenLabs. Create accounts so you are ready to start.`,
-                videoUrl: "video_search_setup.mp4",
-                extraContent: `
-                    <div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3">
-                        <strong>Tip:</strong> Use a <strong>dummy account</strong> to avoid generation limits on images and videos.
-                    </div>
-                `
-            },
-            {
-                title: "Step 2: Writing the Script (ChatGPT)",
-                desc: "Use the following example to create a full video script. You can edit it to make your own.",
-                videoUrl: "video_chatgpt_script.mp4",
-                extraContent: `
-                    <div class="flex justify-between items-center mt-2">
-                        <span class="text-xs font-semibold">Prompt to copy:</span>
-                        <button onclick="copyPrompt()" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-0.5 rounded text-xs">Copy</button>
-                    </div>
-                    <div class="prompt-box">
-Write a full short video script consisting of 5 scenes about "a character exploring a calm futuristic city". For each scene, provide:
-
-1. Scene Description
-2. Midjourney Prompt for a static image
-3. Animation Notes for RunwayML
-4. Voiceover Script with the desired tone
-
-⚠️ This is just an example, feel free to write your own script.
-                    </div>
-                `
-            },
-            {
-                title: "Step 3: Generate Static Images (Midjourney)",
-                desc: `Use each sentence from your script as a prompt to generate images. Try multiple variations and select the best image for each scene. Download the images with numbering.`,
-                videoUrl: "video_midjourney_images.mp4",
-                extraContent: `
-                    <div class="bg-yellow-50 p-3 border-r-4 border-yellow-400 text-sm mt-3">
-                        <strong>Tip:</strong> Adjust prompts to change art style or atmosphere.
-                    </div>
-                `
-            },
-            {
-                title: "Step 4: Animate Scenes (RunwayML)",
-                desc: `Use the Gen-2 feature (or equivalent) to animate each static image. Set camera movements and effects for each scene. Save each video clip.`,
-                videoUrl: "video_runwayml_animation.mp4",
-                extraContent: `
-                    <div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3">
-                        <strong>Tip:</strong> Use a dummy account if daily animation limits apply.
-                    </div>
-                `
-            },
-            {
-                title: "Step 5: Create Voiceover (ElevenLabs)",
-                desc: `Generate voiceover for each scene, selecting the appropriate tone (calm, energetic, etc.). Download audio files in order.`,
-                videoUrl: "video_elevenlabs_voiceover.mp4",
-                extraContent: `
-                    <div class="bg-blue-50 p-3 border-r-4 border-blue-400 text-sm mt-3">
-                        <strong>Note:</strong> Recording is optional for basic use.
-                    </div>
-                `
-            },
-            {
-                title: "Step 6: Assemble and Export (CapCut)",
-                desc: `Import all video clips and audio files into a new CapCut project. Arrange scenes, add background music, and export the final video in high quality.`,
-                videoUrl: "video_capcut_assembly.mp4",
-                extraContent: `
-                    <div class="bg-green-50 p-3 border-r-4 border-green-400 text-sm mt-3">
-                        <strong>Tip:</strong> Ensure precise audio-video synchronization for best quality.
-                    </div>
-                `
-            }
+            { title: "Step 1: Research and Sign Up", desc: `Start by enabling your screen recorder to document your work. Search for these tools: ChatGPT, Midjourney, RunwayML, ElevenLabs. Create accounts so you are ready to start.`, videoUrl: "1.mp4", extraContent: `<div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3"><strong>Tip:</strong> Use a <strong>dummy account</strong> to avoid generation limits on images and videos.</div>` },
+            { title: "Step 2: Writing the Script (ChatGPT)", desc: `Use the following example to create a full video script. You can edit it to make your own.`, videoUrl: "2.mp4", extraContent: `<div class="flex justify-between items-center mt-2"><span class="text-xs font-semibold">Prompt to copy:</span><button onclick="copyPrompt()" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-0.5 rounded text-xs">Copy</button></div><div class="prompt-box">Write a full short video script consisting of 5 scenes about "a character exploring a calm futuristic city". For each scene, provide: 1. Scene Description 2. Midjourney Prompt for a static image 3. Animation Notes for RunwayML 4. Voiceover Script with the desired tone ⚠️ This is just an example, feel free to write your own script.</div>` },
+            { title: "Step 3: Generate Static Images (Midjourney)", desc: `Use each sentence from your script as a prompt to generate images. Try multiple variations and select the best image for each scene. Download the images with numbering.`, videoUrl: "3.mp4", extraContent: `<div class="bg-yellow-50 p-3 border-r-4 border-yellow-400 text-sm mt-3"><strong>Tip:</strong> Adjust prompts to change art style or atmosphere.</div>` },
+            { title: "Step 4: Animate Scenes (RunwayML)", desc: `Use the Gen-2 feature (or equivalent) to animate each static image. Set camera movements and effects for each scene. Save each video clip.`, videoUrl: "4.mp4", extraContent: `<div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3"><strong>Tip:</strong> Use a dummy account if daily animation limits apply.</div>` },
+            { title: "Step 5: Create Voiceover (ElevenLabs)", desc: `Generate voiceover for each scene, selecting the appropriate tone (calm, energetic, etc.). Download audio files in order.`, videoUrl: "5.mp4", extraContent: `<div class="bg-blue-50 p-3 border-r-4 border-blue-400 text-sm mt-3"><strong>Note:</strong> Recording is optional for basic use.</div>` },
+            { title: "Step 6: Assemble and Export (CapCut)", desc: `Import all video clips and audio files into a new CapCut project. Arrange scenes, add background music, and export the final video in high quality.`, videoUrl: "6.mp4", extraContent: `<div class="bg-green-50 p-3 border-r-4 border-green-400 text-sm mt-3"><strong>Tip:</strong> Ensure precise audio-video synchronization for best quality.</div>` }
         ];
 
         let currentStepIndex = 0;
@@ -181,33 +115,6 @@ Write a full short video script consisting of 5 scenes about "a character explor
 
         function prevStep(){
             if(currentStepIndex>0){ currentStepIndex--; loadStep(currentStepIndex); }
-        }
-
-        function generatePDF(){
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            let yOffset=20;
-            doc.setFontSize(22);
-            doc.text("AI Video Creation Guide Summary",105,yOffset,{align:"center"});
-            yOffset+=15;
-            doc.setFontSize(14);
-            doc.text("Key Steps:",15,yOffset);
-            yOffset+=10;
-            doc.setFontSize(12);
-
-            steps.forEach((step,index)=>{
-                if(yOffset>280){doc.addPage();yOffset=20;}
-                yOffset+=10;
-                doc.setFont(undefined,'bold');
-                doc.text(`Step ${index+1}: ${step.title}`,15,yOffset);
-                yOffset+=5;
-                doc.setFont(undefined,'normal');
-                const splitDesc=doc.splitTextToSize(step.desc,180);
-                doc.text(splitDesc,15,yOffset);
-                yOffset+=splitDesc.length*5;
-            });
-
-            doc.save('AI-Video-Guide-Summary.pdf');
         }
 
         function finishGuide(){
