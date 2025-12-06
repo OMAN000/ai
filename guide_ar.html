@@ -80,7 +80,7 @@
             {
                 title: "الخطوة 2: كتابة السيناريو (ChatGPT)",
                 desc: "استخدم المثال التالي لإعداد سيناريو كامل للفيديو، ويمكنك تعديل النص لكتابة سيناريوك الخاص.",
-                videoUrl: "video_chatgpt_script.mp4",
+                videoUrl: "2.mp4",
                 extraContent: `
                     <div class="flex justify-between items-center mt-2">
                         <span class="text-xs font-semibold">الأمر المراد نسخه:</span>
@@ -101,7 +101,7 @@
             {
                 title: "الخطوة 3: توليد الصور الثابتة (Midjourney)",
                 desc: `استخدم كل جملة من السيناريو كأمر لتوليد الصور. جرب عدة نسخ (Re-roll) واختر أفضل صورة لكل مشهد، وحمل الصور مع ترقيمها.`,
-                videoUrl: "video_midjourney_images.mp4",
+                videoUrl: "3.mp4",
                 extraContent: `
                     <div class="bg-yellow-50 p-3 border-r-4 border-yellow-400 text-sm mt-3">
                         <strong>نصيحة:</strong> يمكن تعديل Prompts لتغيير أسلوب الرسم أو الجو العام.
@@ -111,7 +111,7 @@
             {
                 title: "الخطوة 4: تحريك المشاهد (RunwayML)",
                 desc: `استخدم خاصية التحريك Gen-2 أو ما يعادلها لكل صورة ثابتة، مع تحديد حركة الكاميرا والمؤثرات لكل مشهد. حفظ كل مقطع فيديو متحرك.`,
-                videoUrl: "video_runwayml_animation.mp4",
+                videoUrl: "4.mp4",
                 extraContent: `
                     <div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3">
                         <strong>نصيحة:</strong> استخدم حساب وهمي إذا واجهت قيود التحريك اليومية.
@@ -121,7 +121,7 @@
             {
                 title: "الخطوة 5: إنشاء الصوت (ElevenLabs)",
                 desc: `قم بإنشاء الصوت لكل مشهد على حدة، واختر النبرة المناسبة للسياق (هادئ، حماسي...). حمل الملفات الصوتية بالترتيب.`,
-                videoUrl: "video_elevenlabs_voiceover.mp4",
+                videoUrl: "5.mp4",
                 extraContent: `
                     <div class="bg-blue-50 p-3 border-r-4 border-blue-400 text-sm mt-3">
                         <strong>ملاحظة:</strong> التسجيل غير إلزامي للاستخدام الأساسي.
@@ -131,7 +131,7 @@
             {
                 title: "الخطوة 6: التجميع والإخراج النهائي (CapCut)",
                 desc: `اسحب كل مقاطع الفيديو وملفات الصوت إلى مشروع جديد في CapCut. رتب المشاهد، أضف الموسيقى الخلفية، وصدّر الفيديو النهائي بدقة عالية.`,
-                videoUrl: "video_capcut_assembly.mp4",
+                videoUrl: "6.mp4",
                 extraContent: `
                     <div class="bg-green-50 p-3 border-r-4 border-green-400 text-sm mt-3">
                         <strong>نصيحة:</strong> تأكد من مزامنة الصوت مع الفيديو بدقة للحصول على أفضل جودة.
@@ -184,19 +184,9 @@
         }
 
         function generatePDF(){
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            let yOffset=20;
-            doc.setFontSize(22);
-            doc.text("ملخص دليل إنشاء فيديو بالذكاء الاصطناعي",105,yOffset,{align:"center"});
-            yOffset+=15;
-            doc.setFontSize(14);
-            doc.text("الخطوات الأساسية:",15,yOffset);
-            yOffset+=10;
-            doc.setFontSize(12);
-
-            steps.forEach((step,index)=>{
-                if(yOffset>280){doc.addPage();yOffset=20;}
+    // Download ready-made PDF from site
+    window.location.href = "summary.pdf";
+}
                 yOffset+=10;
                 doc.setFont(undefined,'bold');
                 doc.text(`الخطوة ${index+1}: ${step.title}`,15,yOffset);
