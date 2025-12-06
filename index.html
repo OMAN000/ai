@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Video Creator Guide</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+</style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-5">
+
+    <div class="text-center p-5">
+        <h1 class="text-5xl font-bold text-blue-700 mb-4">AI Video Creator Guide</h1>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl">
+            اختر لغتك المفضلة لبدء الدليل التفاعلي خطوة بخطوة.
+            <br>
+            Choose your preferred language to begin the interactive tutorial.
+        </p>
+
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 sm:space-x-reverse">
+            <button onclick="openGuide('ar')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-xl transition shadow-lg">
+                العربية (Arabic)
+            </button>
+
+            <button onclick="openGuide('en')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full text-xl transition shadow-lg">
+                English (الإنجليزية)
+            </button>
+        </div>
+    </div>
+
+    <footer class="text-center text-gray-500 text-sm mt-10">
+        <p>Created by: Haamed Khalid Haamed Al-Nasiri</p>
+        <p>&copy; 2025 AI Guide</p>
+    </footer>
+
+    <script>
+        function openGuide(lang) {
+            let guideFile;
+            if(lang === 'ar') guideFile = 'guide_ar.html';
+            else if(lang === 'en') guideFile = 'guide_en.html';
+
+            if(guideFile){
+                window.open(guideFile, 'AIGuide', 'width=450,height=650,resizable=yes,scrollbars=yes');
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل إنشاء فيديو AI احترافي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .prompt-box {
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            user-select: all;
+        }
+    </style>
+</head>
+<body class="bg-white p-4 flex flex-col h-screen">
+
+    <div id="guide-content" class="flex-grow flex flex-col">
+        <h1 class="text-xl font-bold mb-3 text-blue-700">دليل إنشاء فيديو AI احترافي</h1>
+
+        <div class="mb-3 text-sm text-gray-500">
+            خطوة <span id="step-number" class="font-bold text-blue-600">1</span> من <span id="total-steps">6</span>
+        </div>
+
+        <h2 id="step-title" class="text-lg font-bold mb-3 text-gray-800">عنوان الخطوة</h2>
+
+        <video id="step-video" class="mb-3 rounded" width="100%" height="200" controls autoplay loop muted>
+            <source src="" type="video/mp4">
+            الفيديو غير متاح
+        </video>
+
+        <div id="step-desc" class="text-gray-700 mb-4 overflow-y-auto flex-grow text-sm leading-relaxed"></div>
+    </div>
+
+    <div id="control-panel" class="pt-3 border-t">
+        <div class="flex justify-between">
+            <button onclick="prevStep()" id="btn-prev" class="text-gray-500 hover:text-gray-700 disabled:opacity-50 text-sm" disabled>الرجوع</button>
+            <button onclick="nextStep()" id="btn-next" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded text-sm shadow">التالي</button>
+        </div>
+    </div>
+
+    <div id="summary-page" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center text-center p-4">
+        <h2 class="text-2xl font-bold text-green-600 mb-4">🎉 أحسنت!</h2>
+        <p class="text-gray-700 mb-6">لقد أكملت جميع خطوات إنشاء الفيديو بنجاح. يمكنك الآن مراجعة الملخص أو إغلاق النافذة.</p>
+        <div class="flex flex-col space-y-3">
+            <button onclick="generatePDF()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-8 rounded shadow flex items-center gap-2">
+                <span>⬇️</span> تحميل الملخص (PDF)
+            </button>
+            <button onclick="window.close()" class="text-gray-500 hover:underline font-bold py-2 px-6 rounded">إغلاق الدليل</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        function copyPrompt() {
+            const promptText = document.querySelector('.prompt-box').innerText;
+            navigator.clipboard.writeText(promptText)
+                .then(() => alert('تم نسخ الأمر بنجاح!'))
+                .catch(err => console.error('فشل في النسخ:', err));
+        }
+
+        const steps = [
+            {
+                title: "الخطوة 1: البحث عن الأدوات والتسجيل",
+                desc: `ابدأ بتشغيل مسجل الشاشة لتوثيق عملك. ثم ابحث عن الأدوات التالية: ChatGPT، Midjourney، RunwayML، ElevenLabs. سجل حساباتك لتكون جاهزاً للعمل.`,
+                videoUrl: "1.mp4",
+                extraContent: `
+                    <div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3">
+                        <strong>نصيحة:</strong> استخدم <strong>حساب وهمي</strong> لتجنب قيود توليد الصور والفيديوهات.
+                    </div>
+                `
+            },
+            {
+                title: "الخطوة 2: كتابة السيناريو (ChatGPT)",
+                desc: "استخدم المثال التالي لإعداد سيناريو كامل للفيديو، ويمكنك تعديل النص لكتابة سيناريوك الخاص.",
+                videoUrl: "video_chatgpt_script.mp4",
+                extraContent: `
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-xs font-semibold">الأمر المراد نسخه:</span>
+                        <button onclick="copyPrompt()" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-0.5 rounded text-xs">نسخ</button>
+                    </div>
+                    <div class="prompt-box">
+أكتب سيناريو كامل لفيديو قصير مكون من 5 مشاهد حول "شخصية تستكشف مدينة مستقبلية هادئة". لكل مشهد اكتب بالتفصيل:
+
+1. وصف المشهد (Scene Description)
+2. أمر توليد صورة ثابتة (Midjourney Prompt)
+3. تعليمات التحريك (Animation Notes) لتطبيقها في RunwayML
+4. نص الفويس أوفر (Voiceover Script) مع النبرة المطلوبة
+
+⚠️ هذا مجرد مثال، يمكنك كتابة سيناريوك الخاص كما ترغب.
+                    </div>
+                `
+            },
+            {
+                title: "الخطوة 3: توليد الصور الثابتة (Midjourney)",
+                desc: `استخدم كل جملة من السيناريو كأمر لتوليد الصور. جرب عدة نسخ (Re-roll) واختر أفضل صورة لكل مشهد، وحمل الصور مع ترقيمها.`,
+                videoUrl: "video_midjourney_images.mp4",
+                extraContent: `
+                    <div class="bg-yellow-50 p-3 border-r-4 border-yellow-400 text-sm mt-3">
+                        <strong>نصيحة:</strong> يمكن تعديل Prompts لتغيير أسلوب الرسم أو الجو العام.
+                    </div>
+                `
+            },
+            {
+                title: "الخطوة 4: تحريك المشاهد (RunwayML)",
+                desc: `استخدم خاصية التحريك Gen-2 أو ما يعادلها لكل صورة ثابتة، مع تحديد حركة الكاميرا والمؤثرات لكل مشهد. حفظ كل مقطع فيديو متحرك.`,
+                videoUrl: "video_runwayml_animation.mp4",
+                extraContent: `
+                    <div class="bg-red-50 p-3 border-r-4 border-red-400 text-sm mt-3">
+                        <strong>نصيحة:</strong> استخدم حساب وهمي إذا واجهت قيود التحريك اليومية.
+                    </div>
+                `
+            },
+            {
+                title: "الخطوة 5: إنشاء الصوت (ElevenLabs)",
+                desc: `قم بإنشاء الصوت لكل مشهد على حدة، واختر النبرة المناسبة للسياق (هادئ، حماسي...). حمل الملفات الصوتية بالترتيب.`,
+                videoUrl: "video_elevenlabs_voiceover.mp4",
+                extraContent: `
+                    <div class="bg-blue-50 p-3 border-r-4 border-blue-400 text-sm mt-3">
+                        <strong>ملاحظة:</strong> التسجيل غير إلزامي للاستخدام الأساسي.
+                    </div>
+                `
+            },
+            {
+                title: "الخطوة 6: التجميع والإخراج النهائي (CapCut)",
+                desc: `اسحب كل مقاطع الفيديو وملفات الصوت إلى مشروع جديد في CapCut. رتب المشاهد، أضف الموسيقى الخلفية، وصدّر الفيديو النهائي بدقة عالية.`,
+                videoUrl: "video_capcut_assembly.mp4",
+                extraContent: `
+                    <div class="bg-green-50 p-3 border-r-4 border-green-400 text-sm mt-3">
+                        <strong>نصيحة:</strong> تأكد من مزامنة الصوت مع الفيديو بدقة للحصول على أفضل جودة.
+                    </div>
+                `
+            }
+        ];
+
+        let currentStepIndex = 0;
+        const stepTitle = document.getElementById('step-title');
+        const stepDescContainer = document.getElementById('step-desc');
+        const stepNum = document.getElementById('step-number');
+        const totalSteps = document.getElementById('total-steps');
+        const guideContent = document.getElementById('guide-content');
+        const controlPanel = document.getElementById('control-panel');
+        const summaryPage = document.getElementById('summary-page');
+        const btnNext = document.getElementById('btn-next');
+        const btnPrev = document.getElementById('btn-prev');
+        const stepVideo = document.getElementById('step-video');
+
+        totalSteps.innerText = steps.length;
+
+        function loadStep(index) {
+            const step = steps[index];
+            stepTitle.innerText = step.title;
+            stepDescContainer.innerHTML = `<p>${step.desc}</p>` + (step.extraContent || '');
+            stepNum.innerText = index + 1;
+
+            stepVideo.src = step.videoUrl;
+            stepVideo.load();
+            stepVideo.play();
+
+            btnPrev.disabled = index === 0;
+            if(index === steps.length-1){
+                btnNext.innerText = "إنهاء الدليل";
+                btnNext.classList.replace('bg-blue-600','bg-green-600');
+            } else {
+                btnNext.innerText = "الخطوة التالية";
+                btnNext.classList.replace('bg-green-600','bg-blue-600');
+            }
+        }
+
+        function nextStep(){
+            if(currentStepIndex < steps.length-1){ currentStepIndex++; loadStep(currentStepIndex); }
+            else{ finishLearning(); }
+        }
+
+        function prevStep(){
+            if(currentStepIndex>0){ currentStepIndex--; loadStep(currentStepIndex); }
+        }
+
+        function generatePDF(){
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            let yOffset=20;
+            doc.setFontSize(22);
+            doc.text("ملخص دليل إنشاء فيديو بالذكاء الاصطناعي",105,yOffset,{align:"center"});
+            yOffset+=15;
+            doc.setFontSize(14);
+            doc.text("الخطوات الأساسية:",15,yOffset);
+            yOffset+=10;
+            doc.setFontSize(12);
+
+            steps.forEach((step,index)=>{
+                if(yOffset>280){doc.addPage();yOffset=20;}
+                yOffset+=10;
+                doc.setFont(undefined,'bold');
+                doc.text(`الخطوة ${index+1}: ${step.title}`,15,yOffset);
+                yOffset+=5;
+                doc.setFont(undefined,'normal');
+                const splitDesc=doc.splitTextToSize(step.desc,180);
+                doc.text(splitDesc,15,yOffset);
+                yOffset+=splitDesc.length*5;
+            });
+
+            doc.save('ملخص-دليل-AI-Creator.pdf');
+        }
+
+        function finishLearning(){
+            guideContent.classList.add('hidden');
+            controlPanel.classList.add('hidden');
+            summaryPage.classList.remove('hidden');
+        }
+
+        loadStep(currentStepIndex);
+    </script>
+
+</body>
+</html>
